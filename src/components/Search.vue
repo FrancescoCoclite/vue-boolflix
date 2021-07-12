@@ -2,10 +2,10 @@
 <div>
   <form class="d-flex">
     <div> 
-        <input type="text">
+        <input v-model="cerca" type="text">
     </div>
     <div>
-        <button type="button" class="btn btn-primary mx-3">Cerca</button>
+        <button @click="$emit('cercaFilm', cerca)" type="button" class="btn btn-primary mx-3">Cerca film</button>
     </div>
    </form>
 </div>
@@ -14,7 +14,12 @@
 
 <script>
 export default {
-    name: 'Search'
+    name: 'Search',
+    data(){
+        return{
+            cerca : ''
+        }
+    }
 }
 </script>
 

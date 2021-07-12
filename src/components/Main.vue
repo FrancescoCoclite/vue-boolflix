@@ -2,13 +2,10 @@
   <div>
     <div class="container-lg">
       <div class="row">
-        <div class="col-12 mb-5 ">
-          <Search/>
-        </div>
         <div class="col-12">
 
-          <div class="card d-inline-flex mx-3 mt-2" style="width: 18rem;" v-for="(element,index) in films" :key="index">
-            <div class="card-body">
+          <div class="card d-inline-flex" style="width: 18rem;" v-for="(element,index) in films" :key="index">
+            <div class="card-body" v-if=(element.title.toLowerCase().includes(ric.toLowerCase()))>
               <h5 class="card-title">{{element.title}}</h5>
               <h6>{{element.original_title}}</h6>
               <p class="card-text">{{element.original_language}}</p>
@@ -26,7 +23,6 @@
 <script>
 
    import axios from 'axios';
-   import Search from '../components/Search.vue'
 export default {
   name: 'Main',
       data(){
@@ -36,8 +32,11 @@ export default {
             
         }
     },
+    props :{
+      ric : String
+    },
     components :{
-      Search,
+      
     },
     created(){
         this.filmSelected()
@@ -48,8 +47,8 @@ export default {
             .get(this.apiUrl)
             .then(picker =>{
               this.films = picker.data.results;
-              console.log(picker);
-              console.log(this.films);
+              // console.log(picker);
+              // console.log(this.films);
               
             })
         }
