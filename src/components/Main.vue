@@ -8,7 +8,7 @@
             <div class="card-body" v-if=(element.title.toLowerCase().includes(ric.toLowerCase()))>
               <h5 class="card-title text-secondary">{{element.title}}</h5>
               <h6>{{element.original_title}}</h6>
-              <p class="card-text">{{element.original_language}}</p>
+              <p class="card-text">{{element.original_language}} <img :src="'/img/'+element.original_language+'.png'" alt="bandiera"></p>
               <p>{{element.vote_average}}</p>
             </div>
           </div>
@@ -20,7 +20,7 @@
             <div class="card-body" v-if=(element.name.toLowerCase().includes(ric.toLowerCase()))>
               <h5 class="card-title text-secondary">{{element.name}}</h5>
               <h6>{{element.original_title}}</h6>
-              <p class="card-text"> <img :src="'@/img/'+'element.original_language'+'.png'" alt="bandiera"></p>
+              <p class="card-text">{{ element.original_language }}<img :src="'/img/'+element.original_language+'.png'" alt="bandiera"></p>
               <p>{{element.vote_average}}</p>
             </div>
           </div>
@@ -82,5 +82,8 @@ export default {
 
 
 <style scoped lang="scss">
-
+  img{
+    height: 30px;
+    width: 30px;
+  }
 </style>
