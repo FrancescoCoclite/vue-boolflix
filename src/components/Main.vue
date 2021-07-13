@@ -20,7 +20,7 @@
             <div class="card-body" v-if=(element.name.toLowerCase().includes(ric.toLowerCase()))>
               <h5 class="card-title text-secondary">{{element.name}}</h5>
               <h6>{{element.original_title}}</h6>
-              <p class="card-text">{{element.original_language}}</p>
+              <p class="card-text" v-if="element.original_language.includes(bandiere.length)">{{element.original_language}}</p>
               <p>{{element.vote_average}}</p>
             </div>
           </div>
@@ -39,6 +39,13 @@ export default {
   name: 'Main',
       data(){
         return{
+            bandiere: [
+              '@/img/eng.png',
+              '@/img/france.png',
+              '@/img/giappone.png',
+              '@/img/korea.png',
+              '@/img/spain.png',
+            ],
             apiUrl : "https://api.themoviedb.org/3/movie/popular?api_key=e074c01e562b214f49b0d0b915aa74f1",
             films : [],
             apiSerie : "https://api.themoviedb.org/3/search/tv?api_key=e99307154c6dfb0b4750f6603256716d&language=it_IT&query=s",

@@ -5,7 +5,7 @@
         <input v-model="cerca" type="text">
     </div>
     <div>
-        <button @click="$emit('cercaFilm', cerca)" type="button" class="btn btn-danger mx-3">Cerca film</button>
+        <button @click="$emit('cercaFilm', cerca)" type="button" class="btn bg-danger bg-gradient mx-3">Cerca film</button>
     </div>
    </form>
 </div>
