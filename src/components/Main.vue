@@ -2,13 +2,14 @@
   <div class="text-light bg-dark">
     <div class="container-lg">
       <div class="row">
-        <div class="col-12">
+        <div class="col-12"> 
           <h2 class="text-danger"> Films</h2>
           <div class="card d-inline-flex bg-transparent" style="width: 18rem;" v-for="(element,index) in films" :key="index">
-            <div class="card-body" v-if=(element.title.toLowerCase().includes(ric.toLowerCase()))>
+           <img v-if=(element.title.toLowerCase().includes(ric.toLowerCase())) class="copertina position-relative" :src="'https://image.tmdb.org/t/p/w342' + element.poster_path" alt="copertina-film">
+            <div class="card-body">
               <h5 class="card-title text-secondary">{{element.title}}</h5>
-              <h6>{{element.original_title}}</h6>
-              <p class="card-text">{{element.original_language}} <img :src="'/img/'+element.original_language+'.png'" alt="bandiera"></p>
+              <h6 d-none>{{element.original_title}}</h6>
+              <p class="card-text">{{element.original_language}} <img class="flag" :src="'/img/'+element.original_language+'.png'" alt="bandiera"></p>
               <p>{{element.vote_average}}</p>
             </div>
           </div>
@@ -17,10 +18,11 @@
         <div class="col-12">
           <h2 class="text-danger">Serie tv</h2>
           <div class="card d-inline-flex bg-transparent" style="width: 18rem;" v-for="(element,index) in serie" :key="index">
-            <div class="card-body" v-if=(element.name.toLowerCase().includes(ric.toLowerCase()))>
+            <img v-if=(element.name.toLowerCase().includes(ric.toLowerCase())) class="copertina position-relative" :src="'https://image.tmdb.org/t/p/w342' + element.poster_path" alt="copertina-serie">
+            <div class="card-body">
               <h5 class="card-title text-secondary">{{element.name}}</h5>
               <h6>{{element.original_title}}</h6>
-              <p class="card-text">{{ element.original_language }}<img :src="'/img/'+element.original_language+'.png'" alt="bandiera"></p>
+              <p class="card-text">{{ element.original_language }}<img class="flag" :src="'/img/'+element.original_language+'.png'" alt="bandiera"></p>
               <p>{{element.vote_average}}</p>
             </div>
           </div>
@@ -62,7 +64,7 @@ export default {
             .get(this.apiUrl)
             .then(picker =>{
               this.films = picker.data.results;
-              // console.log(picker);
+               console.log(picker);
               // console.log(this.films);
               
             })
@@ -82,8 +84,14 @@ export default {
 
 
 <style scoped lang="scss">
-  img{
+  .flag{
     height: 30px;
     width: 30px;
   }
+  .card-body:hover{
+    background-color: black;
+    width: 100%;
+    height: 100%;
+  }
+  
 </style>
