@@ -5,8 +5,8 @@
         <div class="col-12"> 
           <h2 class="text-danger"> Films</h2>
           <div class="card d-inline-flex bg-transparent" style="width: 18rem;" v-for="(element,index) in films" :key="index">
-           <img v-if=(element.title.toLowerCase().includes(ric.toLowerCase())) class="copertina position-relative" :src="'https://image.tmdb.org/t/p/w342' + element.poster_path" alt="copertina-film">
-            <div class="card-body">
+           <img class="copertina position-relative" :src="'https://image.tmdb.org/t/p/w342' + element.poster_path" alt="copertina-film">
+            <div class="card-body position-absolute">
               <h5 class="card-title text-secondary">{{element.title}}</h5>
               <h6 d-none>{{element.original_title}}</h6>
               <p class="card-text">{{element.original_language}} <img class="flag" :src="'/img/'+element.original_language+'.png'" alt="bandiera"></p>
@@ -17,9 +17,9 @@
         </div>
         <div class="col-12">
           <h2 class="text-danger">Serie tv</h2>
-          <div class="card d-inline-flex bg-transparent" style="width: 18rem;" v-for="(element,index) in serie" :key="index">
-            <img v-if=(element.name.toLowerCase().includes(ric.toLowerCase())) class="copertina position-relative" :src="'https://image.tmdb.org/t/p/w342' + element.poster_path" alt="copertina-serie">
-            <div class="card-body">
+          <div class="card d-inline-flex bg-transparent" style="width: 18rem;" v-for="(element,index) in series" :key="index">
+            <img class="copertina position-relative" :src="'https://image.tmdb.org/t/p/w342' + element.poster_path" alt="copertina-serie">
+            <div class="card-body position-absolute">
               <h5 class="card-title text-secondary">{{element.name}}</h5>
               <h6>{{element.original_title}}</h6>
               <p class="card-text">{{ element.original_language }}<img class="flag" :src="'/img/'+element.original_language+'.png'" alt="bandiera"></p>
@@ -36,48 +36,16 @@
 
 <script>
 
-   import axios from 'axios';
+   
 export default {
   name: 'Main',
       data(){
         return{
-            apiUrl : "https://api.themoviedb.org/3/movie/popular?api_key=e074c01e562b214f49b0d0b915aa74f1",
-            films : [],
-            apiSerie : "https://api.themoviedb.org/3/search/tv?api_key=e99307154c6dfb0b4750f6603256716d&language=it_IT&query=s",
-            serie : [],
-
-        }
+      }
     },
     props :{
-      ric : String
-    },
-    components :{
-      
-    },
-    created(){
-        this.filmSelected()
-        this.serieSelected()
-    },
-    methods :{
-        filmSelected(){
-            axios
-            .get(this.apiUrl)
-            .then(picker =>{
-              this.films = picker.data.results;
-               console.log(picker);
-              // console.log(this.films);
-              
-            })
-        },
-        serieSelected(){
-            axios
-            .get(this.apiSerie)
-            .then(find =>{
-              this.serie = find.data.results;
-               console.log(find);
-              
-            })
-        }
+        films : Array,
+        series: Array,
     }
 }
 </script>
@@ -88,10 +56,19 @@ export default {
     height: 30px;
     width: 30px;
   }
-  .card-body:hover{
-    background-color: black;
-    width: 100%;
-    height: 100%;
+  .copertina{
+    z-index: 999;
+    &:active{
+      z-index: 00;
+    }
   }
+  .card-body{
+    background-color: black;
+    height: 100%;
+    width: 100%;
+  }
+  
+  
+  
   
 </style>
