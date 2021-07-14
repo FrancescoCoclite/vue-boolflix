@@ -11,15 +11,15 @@
                     <li><a class="mx-2 text-light" href="film">Films</a></li>
                     <li><a class="mx-2 text-light" href="">La mia lista</a></li>
                 </ul>
-                <form class="d-flex">
+                <div class="d-flex">
                     <div> 
-                        <input v-model="cerca" type="text">
+                        <input v-model="cerca" @keyup.enter="$emit('cercaFilms', cerca)" type="text">
                     </div>
                     <div>
-                        <button  @keyup.enter.prevent="$emit('cercaFilms', cerca)" type="button" class="btn bg-danger bg-gradient mx-3">Cerca film</button>
-                        --> @click.prevent="$emit('cercaFilms', cerca)"
+                        <button type="button" @click.prevent="$emit('cercaFilms', cerca)" class="btn bg-danger bg-gradient mx-3">Cerca film</button>
+                        
                     </div>
-                </form>
+                </div>
             </div>
         </div>
     </div>
