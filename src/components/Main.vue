@@ -5,7 +5,7 @@
         <div class="col-12"> 
           <h2 class="text-danger mb-5" id="film"> Films</h2>
           <div class="card d-inline-flex bg-transparent" style="width: 18rem;" v-for="(element,index) in films" :key="index">
-           <img class="copertina position-relative" :src="'https://image.tmdb.org/t/p/w342' + element.poster_path" alt="copertina-film">
+           <img class="copertina position-relative" :src="'https://image.tmdb.org/t/p/w342' + element.poster_path" onerror="this.onerror=null;this.src='/img/img404.jpg'" alt="copertina-film">
             <div class="card-body position-absolute">
               <h5 class="card-title text-secondary">{{element.title}}</h5>
               <h6>{{element.original_title}}</h6>
@@ -19,7 +19,7 @@
         <div class="col-12">
           <h2 class="text-danger mt-5" id="serie">Serie tv</h2>
           <div class="card d-inline-flex bg-transparent" style="width: 18rem;" v-for="(element,index) in series" :key="index">
-            <img class="copertina position-relative" :src="'https://image.tmdb.org/t/p/w342' + element.poster_path" onerror="this.src='/img/img404.jpg'" alt="copertina-serie">
+            <img class="copertina position-relative" :src="'https://image.tmdb.org/t/p/w342' + element.poster_path" onerror="this.onerror=null;this.src='/img/img404.jpg'" alt="copertina-serie">
             <div class="card-body position-absolute">
               <h5 class="card-title text-secondary">{{element.name}}</h5>
               <h6>{{element.original_title}}</h6>
