@@ -1,7 +1,7 @@
 <template>
   <div class="sfondo text-light bg-dark">
     <div class="container-lg">
-      <div class="row">
+      <div class="row black">
         <div class="col-12"> 
           <h2 class="text-danger mb-5" id="film"> Films</h2>
           <div class="card d-inline-flex bg-transparent" style="width: 18rem;" v-for="(element,index) in films" :key="index">
@@ -63,6 +63,7 @@ export default {
   }
   .copertina{
     z-index: 999;
+    height: 429px;
   }
   .card-body{
     background-color: black;
@@ -74,9 +75,11 @@ export default {
   }
   .overview{
     font-size: 10px;
-    grid-template-columns: 1fr, 40ch 1fr;
+    // grid-template-columns: 1fr, 40ch 1fr;
   }
-  
+  .card{
+    margin: 15px;
+  }
   
   
   
