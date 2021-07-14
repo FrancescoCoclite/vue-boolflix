@@ -2,7 +2,6 @@
   <div id="app">
     <Search @cercaFilms="cercaFilms"/>
     <Main :films="films" :series="serie"/>
-
   </div>
 </template>
 

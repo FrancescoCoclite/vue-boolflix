@@ -10,7 +10,7 @@
               <h5 class="card-title text-secondary">{{element.title}}</h5>
               <h6>{{element.original_title}}</h6>
               <p class="card-text">{{element.original_language}} <img class="flag" :src="'/img/'+element.original_language+'.png'" alt="bandiera"></p>
-              <p>{{element.vote_average}}</p>
+              <p>{{element.vote_average}} <star-rating :star-size=12 :rating="Math.round((element.vote_average)/2)"></star-rating></p>
               <p class="overview">{{element.overview}}</p>
             </div>
           </div>
@@ -24,8 +24,8 @@
               <h5 class="card-title text-secondary">{{element.name}}</h5>
               <h6>{{element.original_title}}</h6>
               <p class="card-text">{{ element.original_language }}<img class="flag" :src="'/img/'+element.original_language+'.png'" alt="bandiera"></p>
-              <p>{{element.vote_average}}</p>
-              <p class="overview">{{element.overview}}</p>
+              <p>{{element.vote_average}} <star-rating :star-size=12 :rating="Math.round((element.vote_average)/2)"></star-rating></p>
+              <p class="overview">{{element.overview}} </p>
             </div>
           </div>
 
@@ -37,8 +37,7 @@
 </template>
 
 <script>
-
-   
+import StarRating from 'vue-star-rating'
 export default {
   name: 'Main',
       data(){
@@ -48,7 +47,10 @@ export default {
     props :{
         films : Array,
         series: Array,
-    }
+    },
+    components: {
+    StarRating,
+  }
 }
 </script>
 
